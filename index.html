@@ -1,0 +1,936 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TerraCam - Vente & Location de Terrains et Maisons au Cameroun</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    <style type="text/css">
+      /* ========================================================================= */
+/* 1. VARIABLES & FONDAMENTAUX */
+/* ========================================================================= */
+:root {
+    /* Couleurs */
+    --color-dark: #0A0A0A;
+    --color-medium: #111111;
+    --color-light: #F0F0F0;
+    --color-accent: #00FFC0; /* Vert Néon/Cyan Futuriste */
+    --color-subtext: #999999;
+    
+    /* Typographie */
+    --font-heading: 'Orbitron', sans-serif; /* Pour les titres percutants */
+    --font-body: 'Roboto', sans-serif; /* Pour le corps de texte */
+    
+    /* Espacement */
+    --section-padding: 80px 0;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-body);
+    color: var(--color-light);
+    background-color: var(--color-dark);
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+h1, h2, h3, h4 {
+    font-family: var(--font-heading);
+    color: var(--color-light);
+    margin-bottom: 15px;
+    line-height: 1.2;
+}
+
+h2.section-title {
+    font-size: 2.5rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 40px;
+}
+.center-title { text-align: center; }
+
+.section {
+    padding: var(--section-padding);
+}
+
+.dark-section {
+    background-color: var(--color-medium);
+}
+
+.accent {
+    color: var(--color-accent);
+}
+
+/* ========================================================================= */
+/* 2. BOUTONS & TYPOGRAPHIE */
+/* ========================================================================= */
+.btn-primary, .btn-secondary {
+    display: inline-block;
+    padding: 12px 25px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    border: none;
+}
+
+.btn-primary {
+    background-color: var(--color-accent);
+    color: var(--color-dark);
+}
+
+.btn-primary:hover {
+    background-color: #00E6B8;
+    box-shadow: 0 0 15px var(--color-accent); /* Effet Néon */
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: var(--color-light);
+    border: 2px solid var(--color-accent);
+}
+
+.btn-secondary:hover {
+    background-color: var(--color-accent);
+    color: var(--color-dark);
+}
+
+.btn-text {
+    font-weight: bold;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+.btn-text:hover {
+    color: #00E6B8;
+}
+
+
+/* ========================================================================= */
+/* 3. NAVIGATION */
+/* ========================================================================= */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    /* Glassmorphism style */
+    background: rgba(10, 10, 10, 0.8);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(0, 255, 192, 0.2);
+}
+
+.nav-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 80px;
+}
+
+.logo {
+    font-family: var(--font-heading);
+    font-size: 1.8rem;
+    letter-spacing: 1px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+}
+
+nav ul a {
+    color: var(--color-subtext);
+    text-decoration: none;
+    font-weight: 500;
+    padding: 5px 0;
+    position: relative;
+    transition: color 0.3s;
+}
+
+nav ul a:hover {
+    color: var(--color-accent);
+}
+
+nav ul a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background-color: var(--color-accent);
+    transition: all 0.3s ease;
+}
+
+nav ul a:hover::after {
+    width: 100%;
+    left: 0;
+}
+
+nav .btn-primary {
+    margin-left: 30px;
+}
+
+.menu-toggle {
+    display: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: var(--color-accent);
+}
+
+/* ========================================================================= */
+/* 4. CARROUSEL (HERO) */
+/* ========================================================================= */
+.hero-carousel {
+    height: 100vh; 
+    position: relative;
+}
+
+.carousel-slide {
+    width: 100%;
+    height: 100%;
+    /* Remplacez par vos images */
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-overlay {
+    background: rgba(0, 0, 0, 0.6); 
+    padding: 40px;
+    border-radius: 10px;
+    text-align: center;
+    border: 1px solid rgba(0, 255, 192, 0.2);
+    box-shadow: 0 0 25px rgba(0, 255, 192, 0.2);
+}
+
+.hero-overlay h2 {
+    font-size: 3.5rem;
+    max-width: 800px;
+    margin: 0 auto 20px;
+    text-shadow: 0 0 10px rgba(0, 255, 192, 0.5);
+}
+
+.hero-overlay p {
+    font-size: 1.2rem;
+    color: var(--color-subtext);
+    margin-bottom: 30px;
+}
+
+/* ========================================================================= */
+/* 5. A PROPOS */
+/* ========================================================================= */
+.about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    align-items: center;
+}
+
+.about-text h2 {
+    font-size: 2rem;
+}
+
+.about-image {
+    height: 400px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid var(--color-accent);
+    box-shadow: 0 0 20px rgba(0, 255, 192, 0.1);
+}
+
+/* ========================================================================= */
+/* 6. SERVICES */
+/* ========================================================================= */
+.services-grid {
+    display: grid;
+    /* Pour 6 cartes, on assure qu'elles s'adaptent bien */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin-top: 50px;
+}
+
+.service-card {
+    background-color: #1a1a1a;
+    padding: 30px;
+    border-radius: 8px;
+    text-align: center;
+    border-top: 3px solid var(--color-accent);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 30px rgba(0, 255, 192, 0.2);
+}
+
+.service-icon {
+    font-size: 3rem;
+    color: var(--color-accent);
+    margin-bottom: 20px;
+}
+
+.service-card h4 {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+/* ========================================================================= */
+/* 7. TÉMOIGNAGES */
+/* ========================================================================= */
+.testimonials-grid {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.testimonial-card {
+    background-color: var(--color-medium);
+    padding: 25px;
+    border-radius: 8px;
+    max-width: 450px;
+    position: relative;
+    border-left: 5px solid var(--color-accent);
+    box-shadow: 0 0 10px rgba(0, 255, 192, 0.1);
+}
+
+.quote {
+    font-style: italic;
+    margin-bottom: 20px;
+    color: var(--color-light);
+}
+
+.client-info {
+    text-align: right;
+    border-top: 1px dashed var(--color-subtext);
+    padding-top: 10px;
+}
+
+.client-name {
+    font-weight: bold;
+    display: block;
+    color: var(--color-accent);
+}
+
+.client-title {
+    color: var(--color-subtext);
+    font-size: 0.9rem;
+}
+
+/* ========================================================================= */
+/* 8. GALERIE */
+/* ========================================================================= */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+}
+
+.gallery-item {
+    height: 300px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    border: 1px solid rgba(0, 255, 192, 0.1);
+}
+
+.gallery-item:hover {
+    transform: scale(1.05);
+    opacity: 0.8;
+}
+
+/* MODAL / PARALLAX ZOOM */
+.modal {
+    display: none; 
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden; /* Important pour l'effet */
+    background-color: rgba(0, 0, 0, 0.95); 
+    align-items: center;
+    justify-content: center;
+    animation: fadein 0.5s;
+}
+
+.modal-content {
+    margin: auto;
+    display: block;
+    width: 90%;
+    max-width: 1200px;
+    max-height: 90vh;
+    object-fit: contain;
+    /* Zoom/Parallax géré par JS, mais la transition CSS assure la fluidité */
+    transition: transform 0.3s ease-out; 
+}
+
+.close-btn {
+    position: fixed; /* Reste en place même avec le mouvement du contenu */
+    top: 20px;
+    right: 35px;
+    color: var(--color-accent);
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.close-btn:hover {
+    color: var(--color-light);
+    transform: rotate(90deg);
+}
+
+
+/* ========================================================================= */
+/* 9. CONTACT */
+/* ========================================================================= */
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+}
+
+.contact-info .info-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.info-item i {
+    font-size: 1.5rem;
+}
+
+/* Formulaire Stylisé */
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.contact-form input,
+.contact-form textarea,
+.contact-form select {
+    background-color: var(--color-medium);
+    border: 1px solid #333;
+    padding: 15px;
+    border-radius: 5px;
+    color: var(--color-light);
+    font-family: var(--font-body);
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus,
+.contact-form select:focus {
+    outline: none;
+    border-color: var(--color-accent);
+    box-shadow: 0 0 10px rgba(0, 255, 192, 0.5); /* Effet de focus néon */
+}
+.contact-form select option {
+    background-color: var(--color-medium); 
+}
+
+/* ========================================================================= */
+/* 10. FOOTER */
+/* ========================================================================= */
+footer {
+    background-color: var(--color-dark);
+    border-top: 1px solid #1a1a1a;
+    padding-top: 50px;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 30px;
+    padding-bottom: 30px;
+}
+
+.footer-col h4 {
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+    color: var(--color-accent);
+}
+
+.footer-col ul {
+    list-style: none;
+}
+
+.footer-col a {
+    color: var(--color-subtext);
+    text-decoration: none;
+    display: block;
+    margin-bottom: 10px;
+    transition: color 0.3s;
+}
+
+.footer-col a:hover {
+    color: var(--color-light);
+}
+
+.social-links a {
+    display: inline-block;
+    font-size: 1.5rem;
+    margin-right: 15px;
+    border: 1px solid var(--color-subtext);
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    border-radius: 50%;
+    transition: all 0.3s;
+}
+
+.social-links a:hover {
+    background-color: var(--color-accent);
+    color: var(--color-dark);
+    border-color: var(--color-accent);
+}
+
+.footer-bottom {
+    text-align: center;
+    padding: 20px 0;
+    border-top: 1px solid #1a1a1a;
+}
+
+/* ========================================================================= */
+/* 11. SCROLL-TOP BUTTON */
+/* ========================================================================= */
+.scroll-top-btn {
+    display: none; 
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    background-color: var(--color-medium);
+    color: var(--color-accent);
+    text-align: center;
+    line-height: 50px;
+    border-radius: 50%;
+    font-size: 1.2rem;
+    box-shadow: 0 0 15px rgba(0, 255, 192, 0.4);
+    transition: opacity 0.3s;
+    z-index: 999;
+    border: 1px solid var(--color-accent);
+    justify-content: center;
+    align-items: center;
+}
+
+.scroll-top-btn:hover {
+    opacity: 0.8;
+}
+
+/* ========================================================================= */
+/* 12. RESPONSIVITÉ (Design Mobile) */
+/* ========================================================================= */
+@media (max-width: 900px) {
+    /* NAVIGATION MOBILE */
+    nav {
+        display: none; 
+        position: absolute;
+        top: 80px;
+        left: 0;
+        width: 100%;
+        background: var(--color-dark);
+        padding: 20px 0;
+        border-top: 1px solid rgba(0, 255, 192, 0.2);
+    }
+    nav.active {
+        display: block; /* Afficher le menu quand la classe active est présente */
+    }
+
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+    }
+    nav .btn-primary {
+        margin-top: 20px;
+        margin-left: 0;
+    }
+
+    .menu-toggle {
+        display: block; 
+    }
+
+    /* GRILLES */
+    .about-grid,
+    .contact-grid {
+        grid-template-columns: 1fr; 
+    }
+    .about-image {
+        height: 300px; 
+        order: 1; /* Mettre l'image avant le texte sur mobile */
+    }
+    .about-text {
+        order: 2;
+    }
+
+    .gallery-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 colonnes sur mobile */
+    }
+    .footer-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+    .footer-col {
+        margin-bottom: 20px;
+    }
+
+    /* TYPOGRAPHIE */
+    .hero-overlay h2 {
+        font-size: 2rem;
+    }
+    .section-title {
+        font-size: 1.8rem;
+    }
+}
+    </style>
+</head>
+<body>
+
+    <header id="nav">
+        <div class="container nav-content">
+            <h1 class="logo">Terra<span class="accent">Cam</span></h1>
+            <nav id="main-nav">
+                <ul>
+                    <li><a href="#home">Accueil</a></li>
+                    <li><a href="#about">À Propos</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#gallery">Galerie</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <a href="#contact" class="btn-primary">Devis Gratuit</a>
+            </nav>
+            <div class="menu-toggle"><i class="fas fa-bars"></i></div>
+        </div>
+    </header>
+
+    <main>
+        
+        <section id="home" class="hero-carousel">
+            <div class="carousel-slide active" style="background-image: url('placeholder-carousel-1.png');">
+                <div class="hero-overlay">
+                    <h2 data-aos="fade-up" data-aos-duration="1000">L'Investissement Foncier du Futur, Aujourd'hui au Cameroun.</h2>
+                    <p data-aos="fade-up" data-aos-delay="300">Terrains et maisons titrés, vérifiés et prêts à bâtir ou à habiter.</p>
+                    <a href="#services" class="btn-secondary" data-aos="zoom-in" data-aos-delay="600">Découvrir les Offres</a>
+                </div>
+            </div>
+            </section>
+
+        <section id="about" class="section">
+            <div class="container about-grid">
+                <div class="about-text" data-aos="fade-right">
+                    <h3 class="section-subtitle">Notre Vision</h3>
+                    <h2 class="section-title">La Transparence Immobilière au Cœur de Notre Engagement</h2>
+                    <p>Fondée sur une connaissance approfondie du marché camerounais, TerraCam s'engage à simplifier l'accès à la propriété foncière et immobilière. Nous éliminons l'incertitude grâce à une vérification légale rigoureuse, offrant à nos clients une tranquillité d'esprit totale pour leurs projets de vie ou d'investissement. Notre mission : **Sécurité, Modernité et Expertise locale.**</p>
+                    <a href="#services" class="btn-text accent">En savoir plus sur notre mission <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="about-image" data-aos="fade-left" style="background-image: url('placeholder-about.png');">
+                    </div>
+            </div>
+        </section>
+
+        <section id="services" class="section dark-section">
+            <div class="container">
+                <h3 class="section-subtitle accent">Nos Solutions</h3>
+                <h2 class="section-title center-title" data-aos="fade-down">Des Services Foncier & Immobilier 360°</h2>
+
+                <div class="services-grid">
+                    
+                    <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+                        <i class="fas fa-handshake service-icon"></i>
+                        <h4>Acquisition & Vente de Terrains Sécurisée</h4>
+                        <p>Processus légal complet garantissant des titres de propriété incontestables et rapides.</p>
+                    </div>
+
+                    <div class="service-card" data-aos="fade-up" data-aos-delay="200">
+                        <i class="fas fa-home service-icon"></i>
+                        <h4>Achat & Vente de Maisons Clés en Main</h4>
+                        <p>Découvrez des résidences vérifiées, de la villa moderne à la maison familiale, partout au Cameroun.</p>
+                    </div>
+
+                    <div class="service-card" data-aos="fade-up" data-aos-delay="300">
+                        <i class="fas fa-map-marked-alt service-icon"></i>
+                        <h4>Topographie par Drone & Bornage</h4>
+                        <p>Mesures de précision modernes pour une délimitation claire et numérique de votre parcelle.</p>
+                    </div>
+
+                    <div class="service-card" data-aos="fade-up" data-aos-delay="400">
+                        <i class="fas fa-city service-icon"></i>
+                        <h4>Location de Terrains Commerciaux</h4>
+                        <p>Trouvez l'emplacement stratégique idéal pour vos activités industrielles ou de services.</p>
+                    </div>
+
+                    <div class="service-card" data-aos="fade-up" data-aos-delay="500">
+                        <i class="fas fa-key service-icon"></i>
+                        <h4>Location Résidentielle (Logements)</h4>
+                        <p>Accès à notre catalogue d'appartements et de maisons prêts à louer, avec baux sécurisés.</p>
+                    </div>
+
+                    <div class="service-card" data-aos="fade-up" data-aos-delay="600">
+                        <i class="fas fa-chart-line service-icon"></i>
+                        <h4>Conseil en Valorisation Future</h4>
+                        <p>Analyse de l'évolution du marché pour maximiser le retour sur investissement de votre bien immobilier.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="testimonials" class="section">
+            <div class="container">
+                <h3 class="section-subtitle accent">Confiance Achevée</h3>
+                <h2 class="section-title center-title" data-aos="fade-up">Ils ont choisi TerraCam</h2>
+
+                <div class="testimonials-grid">
+                    
+                    <div class="testimonial-card" data-aos="flip-left" data-aos-delay="100">
+                        <p class="quote">"Grâce à TerraCam, j'ai pu acheter mon terrain sans aucune complication administrative. Le processus était clair et incroyablement rapide."</p>
+                        <div class="client-info">
+                            <span class="client-name">Martine E.</span>
+                            <span class="client-title">Investisseuse, Douala</span>
+                        </div>
+                    </div>
+
+                    <div class="testimonial-card" data-aos="flip-left" data-aos-delay="300">
+                        <p class="quote">"Le conseil en bornage par drone a été un vrai plus. Un service moderne et très professionnel. Je recommande vivement !"</p>
+                        <div class="client-info">
+                            <span class="client-name">Jean-Pierre K.</span>
+                            <span class="client-title">Entrepreneur, Yaoundé</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="gallery" class="section dark-section">
+            <div class="container">
+                <h3 class="section-subtitle accent">Vues Exclusives</h3>
+                <h2 class="section-title center-title" data-aos="fade-up">Notre Portfolio de Biens d'Exception</h2>
+
+                <div class="gallery-grid">
+                    <div class="gallery-item" data-aos="zoom-in" data-aos-delay="50" style="background-image: url('placeholder-gal-1.png');" data-img-url="placeholder-gal-1.png"></div>
+                    <div class="gallery-item" data-aos="zoom-in" data-aos-delay="150" style="background-image: url('placeholder-gal-2.png');" data-img-url="placeholder-gal-2.png"></div>
+                    <div class="gallery-item" data-aos="zoom-in" data-aos-delay="250" style="background-image: url('placeholder-gal-3.png');" data-img-url="placeholder-gal-3.png"></div>
+                    <div class="gallery-item" data-aos="zoom-in" data-aos-delay="350" style="background-image: url('placeholder-gal-4.png');" data-img-url="placeholder-gal-4.png"></div>
+                    <div class="gallery-item" data-aos="zoom-in" data-aos-delay="450" style="background-image: url('placeholder-gal-5.png');" data-img-url="placeholder-gal-5.png"></div>
+                    <div class="gallery-item" data-aos="zoom-in" data-aos-delay="550" style="background-image: url('placeholder-gal-6..jpg');" data-img-url="placeholder-gal-6..jpg"></div>
+                </div>
+
+                <div id="gallery-modal" class="modal">
+                    <span class="close-btn">&times;</span>
+                    <img class="modal-content" id="modal-image" src="" alt="Bien immobilier">
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="section">
+            <div class="container contact-grid">
+                
+                <div class="contact-info" data-aos="fade-right">
+                    <h3 class="section-subtitle accent">Contactez-Nous</h3>
+                    <h2 class="section-title">Passez à l'Action</h2>
+                    <p>Prêt à sécuriser votre avenir foncier et immobilier ? Remplissez le formulaire ou utilisez les coordonnées ci-dessous.</p>
+                    
+                    <div class="info-item">
+                        <i class="fas fa-phone accent"></i>
+                        <p>+237 6XX XX XX XX</p>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-envelope accent"></i>
+                        <p>contact@terracam.cm</p>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-map-marker-alt accent"></i>
+                        <p>Rue 1.050, Yaoundé, Cameroun</p>
+                    </div>
+                </div>
+
+                <form class="contact-form" data-aos="fade-left">
+                    <input type="text" placeholder="Nom Complet" required>
+                    <input type="email" placeholder="Adresse Email" required>
+                    <input type="tel" placeholder="Téléphone">
+                    <select required>
+                        <option value="" disabled selected>Objet de votre demande</option>
+                        <option value="achat-terrain">Achat de Terrain</option>
+                        <option value="achat-maison">Achat de Maison</option>
+                        <option value="location">Location (Terrain ou Maison)</option>
+                        <option value="conseil">Conseil Foncier</option>
+                        <option value="autre">Autre</option>
+                    </select>
+                    <textarea placeholder="Votre message..." rows="5" required></textarea>
+                    <button type="submit" class="btn-primary">Envoyer la Demande</button>
+                </form>
+
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="container footer-grid">
+            <div class="footer-col">
+                <h4 class="logo">Terra<span class="accent">Cam</span></h4>
+                <p>Spécialiste de l'immobilier foncier sécurisé au Cameroun.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Liens Rapides</h4>
+                <ul>
+                    <li><a href="#about">À Propos</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#gallery">Galerie</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Légal</h4>
+                <ul>
+                    <li><a href="#">Mentions Légales</a></li>
+                    <li><a href="#">Politique de Confidentialité</a></li>
+                </ul>
+            </div>
+            <div class="footer-col social-links">
+                <h4>Suivez-Nous</h4>
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 TerraCam. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+    <a href="#home" id="scroll-top-btn" class="scroll-top-btn" title="Retour en haut">
+        <i class="fas fa-chevron-up"></i>
+    </a>
+
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            once: true, 
+            duration: 800,
+            easing: 'ease-out',
+        });
+
+        // ----------------------------------------------------
+        // 1. LOGIQUE MENU MOBILE (Responsive)
+        // ----------------------------------------------------
+        const menuToggle = document.querySelector('.menu-toggle');
+        const mainNav = document.getElementById('main-nav');
+        const navLinks = mainNav.querySelectorAll('a');
+
+        menuToggle.addEventListener('click', () => {
+            mainNav.classList.toggle('active');
+            menuToggle.querySelector('i').classList.toggle('fa-bars');
+            menuToggle.querySelector('i').classList.toggle('fa-times');
+        });
+
+        // Fermer le menu après avoir cliqué sur un lien (sur mobile)
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if (mainNav.classList.contains('active')) {
+                    mainNav.classList.remove('active');
+                    menuToggle.querySelector('i').classList.add('fa-bars');
+                    menuToggle.querySelector('i').classList.remove('fa-times');
+                }
+            });
+        });
+
+
+        // ----------------------------------------------------
+        // 2. LOGIQUE SCROLL-TOP
+        // ----------------------------------------------------
+        const scrollTopBtn = document.getElementById('scroll-top-btn');
+        window.onscroll = function() {
+            if (document.body.scrollTop > 500 || document.documentElement.scrollTop > 500) {
+                scrollTopBtn.style.display = "flex";
+            } else {
+                scrollTopBtn.style.display = "none";
+            }
+        };
+
+
+        // ----------------------------------------------------
+        // 3. LOGIQUE GALERIE (MODALE et Effet ZOOM/PARALLAX)
+        // ----------------------------------------------------
+        const galleryItems = document.querySelectorAll('.gallery-item');
+        const modal = document.getElementById('gallery-modal');
+        const modalImg = document.getElementById('modal-image');
+        const closeBtn = document.querySelector('.close-btn');
+
+        galleryItems.forEach(item => {
+            item.onclick = function() {
+                modal.style.display = "flex";
+                
+                // Récupérer l'URL de l'image stockée dans l'attribut data-img-url
+                const url = this.getAttribute('data-img-url');
+                modalImg.src = url;
+
+                // 🌟 Effet Zoom/Parallax (Mouvement de la Souris) 🌟
+                // L'image est légèrement transformée lorsque la souris bouge au-dessus de la modale.
+                modal.addEventListener('mousemove', handleParallax);
+            }
+        });
+
+        function handleParallax(e) {
+            const centerX = window.innerWidth / 2;
+            const centerY = window.innerHeight / 2;
+            
+            const clientX = e.clientX;
+            const clientY = e.clientY;
+
+            // Calculer la divergence par rapport au centre (petites valeurs)
+            const moveX = (clientX - centerX) / 50; // Divisé par 50 pour un mouvement subtil
+            const moveY = (clientY - centerY) / 50;
+
+            // Appliquer la transformation (léger déplacement et léger zoom)
+            modalImg.style.transform = `translate(${moveX}px, ${moveY}px) scale(1.03)`;
+        }
+
+        closeBtn.onclick = function() {
+            modal.style.display = "none";
+            modal.removeEventListener('mousemove', handleParallax); // Nettoyage
+            modalImg.style.transform = `scale(1.0)`; // Réinitialiser le zoom
+        }
+
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+                modal.removeEventListener('mousemove', handleParallax); // Nettoyage
+                modalImg.style.transform = `scale(1.0)`; // Réinitialiser le zoom
+            }
+        }
+    </script>
+</body>
+</html>
