@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nos Services - SCH Immobilier</title>
+    <link rel="icon" type="image/png" href="logo-sch.png">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    
+    <style type="text/css">
+/* ========================================================================= */
+/* 1. VARIABLES & FONDAMENTAUX (Identiques à l'accueil) */
+/* ========================================================================= */
+:root {
+    --color-dark: #0A0A0A;
+    --color-medium: #111111;
+    --color-light: #F0F0F0;
+    --color-accent: #27a34a; 
+    --color-subtext: #999999;
+    --wa-green: #25D366; 
+    --font-heading: 'Orbitron', sans-serif;
+    --font-body: 'Roboto', sans-serif;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+body { font-family: var(--font-body); color: var(--color-light); background-color: var(--color-dark); line-height: 1.6; overflow-x: hidden; }
+.container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+.accent { color: var(--color-accent); }
+.section { padding: 100px 0; }
+.dark-section { background-color: var(--color-medium); }
+
+/* PRELOADER */
+#preloader { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: var(--color-dark); display: flex; justify-content: center; align-items: center; z-index: 9999; }
+.loader-logo { width: 150px; animation: pulse 1.5s infinite; }
+@keyframes pulse { 0%, 100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.1); opacity: 0.7; } }
+
+/* NAVIGATION */
+header { position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; background: rgba(10, 10, 10, 0.95); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(39, 163, 74, 0.2); }
+.nav-content { display: flex; justify-content: space-between; align-items: center; height: 90px; }
+.logo img { height: 65px; width: auto; }
+nav ul { list-style: none; display: flex; gap: 25px; }
+nav ul a { color: var(--color-subtext); text-decoration: none; font-weight: 500; font-size: 0.9rem; transition: 0.3s; }
+nav ul a:hover, nav ul a.active { color: var(--color-accent); }
+
+/* HERO PAGE SERVICES */
+.page-hero { 
+    height: 45vh; 
+    background: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.85)), url('https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=1920');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding-top: 90px;
+}
+.page-hero h1 { font-family: var(--font-heading); font-size: 3rem; text-transform: uppercase; }
+
+/* GRILLE DE SERVICES DÉTAILLÉE */
+.services-detailed-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 40px; margin-top: 50px; }
+.service-full-card { background: #1a1a1a; border-radius: 15px; overflow: hidden; border: 1px solid #333; transition: 0.4s; }
+.service-full-card:hover { transform: translateY(-10px); border-color: var(--color-accent); box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+.service-icon-box { background: var(--color-accent); padding: 40px; text-align: center; font-size: 3.5rem; color: white; }
+.service-content { padding: 30px; }
+.service-content h3 { font-family: var(--font-heading); margin-bottom: 15px; font-size: 1.3rem; }
+.service-list { list-style: none; margin: 20px 0; }
+.service-list li { margin-bottom: 10px; color: var(--color-subtext); display: flex; align-items: center; gap: 10px; font-size: 0.95rem; }
+.service-list li i { color: var(--color-accent); font-size: 0.8rem; }
+
+.btn-service { display: inline-block; width: 100%; text-align: center; padding: 12px; background: transparent; border: 1px solid var(--color-accent); color: var(--color-accent); text-decoration: none; font-weight: bold; border-radius: 5px; transition: 0.3s; }
+.btn-service:hover { background: var(--color-accent); color: white; }
+
+/* FOOTER PRO (Copie exacte de l'accueil) */
+.footer-pro { background-color: #050505; padding: 80px 0 30px; border-top: 2px solid var(--color-accent); margin-top: 50px; }
+.footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1.2fr; gap: 40px; margin-bottom: 50px; }
+.footer-col h4 { font-family: var(--font-heading); font-size: 1.2rem; margin-bottom: 25px; position: relative; padding-bottom: 10px; }
+.footer-col h4::after { content: ''; position: absolute; left: 0; bottom: 0; width: 40px; height: 2px; background-color: var(--color-accent); }
+.footer-links { list-style: none; }
+.footer-links li { margin-bottom: 12px; }
+.footer-links a { color: var(--color-subtext); text-decoration: none; transition: 0.3s; }
+.footer-links a:hover { color: var(--color-accent); padding-left: 5px; }
+.social-links { display: flex; gap: 15px; margin-top: 20px; }
+.social-links a { width: 40px; height: 40px; background: #111; display: flex; align-items: center; justify-content: center; border-radius: 50%; color: white; transition: 0.3s; }
+.social-links a:hover { background: var(--color-accent); }
+
+/* WHATSAPP */
+/* --- BLOC WHATSAPP CHATBOX --- */
+#wa-widget { position: fixed; bottom: 30px; right: 30px; z-index: 2000; }
+.wa-btn { width: 60px; height: 60px; background: var(--wa-green); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 30px; cursor: pointer; box-shadow: 0 4px 15px rgba(0,0,0,0.3); transition: 0.3s; }
+
+.wa-chatbox {
+    position: absolute; bottom: 80px; right: 0; width: 300px; background: white; border-radius: 12px; overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.5); display: none; flex-direction: column; animation: slideIn 0.3s ease-out;
+}
+@keyframes slideIn { from { transform: translateY(15px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+
+.wa-header { background: var(--wa-green); color: white; padding: 15px; display: flex; align-items: center; gap: 10px; }
+.wa-header h4 { margin: 0; font-size: 0.9rem; color: white; font-family: var(--font-body); }
+.wa-body { background: #e5ddd5; padding: 15px; }
+.wa-msg { background: white; padding: 10px; border-radius: 0 10px 10px 10px; font-size: 0.85rem; color: #333; }
+.wa-footer { padding: 10px; background: white; }
+.wa-send-btn { background: var(--wa-green); color: white; padding: 8px; border-radius: 5px; text-decoration: none; font-weight: bold; display: block; text-align: center; font-size: 0.8rem; }
+
+@media (max-width: 900px) {
+    .nav-content nav { display: none; }
+    .footer-grid { grid-template-columns: 1fr; }
+}
+    </style>
+</head>
+<body>
+
+    <div id="preloader">
+        <img src="logo-sch.png" alt="SCH" class="loader-logo">
+    </div>
+
+    <header>
+        <div class="container nav-content">
+            <a href="index.html" class="logo"><img src="logo-sch.png" alt="Logo SCH"></a>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Accueil</a></li>
+                    <li><a href="apropos.html">À Propos</a></li>
+                    <li><a href="services.html" class="active">Services</a></li>
+                    <li><a href="galerie.html">Galerie</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="page-hero">
+        <div class="container" data-aos="fade-down">
+            <h1>Nos <span class="accent">Expertises</span></h1>
+            <p style="color: var(--color-subtext); margin-top: 15px; max-width: 800px; margin-left: auto; margin-right: auto;">Des solutions immobilières complètes, de la sécurisation foncière à la gestion de haut standing.</p>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="services-detailed-grid">
+                
+                <div class="service-full-card" data-aos="fade-up">
+                    <div class="service-icon-box"><i class="fas fa-file-contract"></i></div>
+                    <div class="service-content">
+                        <h3>Sécurisation Foncière</h3>
+                        <p>Nous protégeons vos investissements contre les doubles ventes et les litiges.</p>
+                        <ul class="service-list">
+                            <li><i class="fas fa-check"></i> Audit de titres fonciers</li>
+                            <li><i class="fas fa-check"></i> Vérification aux domaines</li>
+                            <li><i class="fas fa-check"></i> Accompagnement chez le notaire</li>
+                            <li><i class="fas fa-check"></i> Levée d'hypothèques</li>
+                        </ul>
+                        <a href="index.html#contact" class="btn-service">Demander une étude</a>
+                    </div>
+                </div>
+
+                <div class="service-full-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="service-icon-box"><i class="fas fa-compass"></i></div>
+                    <div class="service-content">
+                        <h3>Topographie & Bornage</h3>
+                        <p>Mesures de précision pour définir les limites exactes de votre propriété.</p>
+                        <ul class="service-list">
+                            <li><i class="fas fa-check"></i> Bornage contradictoire</li>
+                            <li><i class="fas fa-check"></i> Plans de lotissement</li>
+                            <li><i class="fas fa-check"></i> Implantation de bâtiments</li>
+                            <li><i class="fas fa-check"></i> Levé topographique GPS</li>
+                        </ul>
+                        <a href="index.html#contact" class="btn-service">Demander un devis</a>
+                    </div>
+                </div>
+
+                <div class="service-full-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="service-icon-box"><i class="fas fa-home"></i></div>
+                    <div class="service-content">
+                        <h3>Gestion Immobilière</h3>
+                        <p>Maximisez la rentabilité de vos biens en toute tranquillité d'esprit.</p>
+                        <ul class="service-list">
+                            <li><i class="fas fa-check"></i> Recherche de locataires</li>
+                            <li><i class="fas fa-check"></i> Rédaction des baux</li>
+                            <li><i class="fas fa-check"></i> Maintenance & Entretien</li>
+                            <li><i class="fas fa-check"></i> Collecte des loyers</li>
+                        </ul>
+                        <a href="index.html#contact" class="btn-service">Confier mon bien</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="section dark-section" style="text-align: center; border-top: 1px solid #333; border-bottom: 1px solid #333;">
+        <div class="container" data-aos="zoom-in">
+            <h2 style="font-family: var(--font-heading); margin-bottom: 20px;">Un projet spécifique en tête ?</h2>
+            <p style="color: var(--color-subtext); margin-bottom: 30px;">Nos conseillers sont disponibles pour vous offrir une consultation personnalisée.</p>
+            <a href="https://wa.me/237600000000" class="btn-service" style="width: auto; padding: 15px 40px; background: var(--color-accent); color: white;">Prendre RDV sur WhatsApp</a>
+        </div>
+    </section>
+
+    <footer class="footer-pro">
+        <div class="container footer-grid">
+            <div class="footer-col">
+                <img src="logo-sch.png" alt="Logo SCH" style="height:60px; margin-bottom:20px;">
+                <p>Votre partenaire de confiance pour la sécurisation foncière et immobilière au Cameroun.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Liens Utiles</h4>
+                <ul class="footer-links">
+                    <li><a href="index.html">Accueil</a></li>
+                    <li><a href="apropos.html">À Propos</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Nos Services</h4>
+                <ul class="footer-links">
+                    <li><a href="#">Vente de Terrains</a></li>
+                    <li><a href="#">Bornage Technique</a></li>
+                    <li><a href="#">Vérification de Titre</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Contact</h4>
+                <p>Douala - Cameroun</p>
+                <p>+237 6xx xx xx xx</p>
+                <p>contact@sch-immo.cm</p>
+            </div>
+        </div>
+        <div class="container" style="border-top: 1px solid #1a1a1a; padding-top: 30px; text-align: center; color: var(--color-subtext); font-size: 0.9rem;">
+            &copy; 2025 SCH Immobilier. Tous droits réservés.
+        </div>
+    </footer>
+
+   <div id="wa-widget">
+    <div class="wa-chatbox" id="wa-chat">
+        <div class="wa-header">
+            <i class="fab fa-whatsapp fa-2x"></i>
+            <div>
+                <h4>Support SCH</h4>
+                <small style="color:rgba(255,255,255,0.8)">En ligne</small>
+            </div>
+        </div>
+        <div class="wa-body">
+            <div class="wa-msg">Bonjour ! Comment pouvons-nous vous aider ?</div>
+        </div>
+        <div class="wa-footer">
+            <a href="https://wa.me/237600000000" target="_blank" class="wa-send-btn">Démarrer la discussion</a>
+        </div>
+    </div>
+    <div class="wa-btn" id="wa-toggle"><i class="fab fa-whatsapp"></i></div>
+</div>
+
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script>
+        window.addEventListener('load', function() {
+            const preloader = document.getElementById('preloader');
+            setTimeout(() => { preloader.style.opacity = '0'; setTimeout(() => preloader.style.display = 'none', 500); }, 1500);
+        });
+
+        // Gestion de la Chatbox WhatsApp
+const waToggle = document.getElementById('wa-toggle');
+const waChat = document.getElementById('wa-chat');
+
+waToggle.addEventListener('click', () => {
+    waChat.style.display = (waChat.style.display === 'flex') ? 'none' : 'flex';
+});
+
+// Fermer la chatbox si on clique ailleurs sur la page
+document.addEventListener('click', (e) => {
+    if (!document.getElementById('wa-widget').contains(e.target)) {
+        waChat.style.display = 'none';
+    }
+});
+        AOS.init({ once: true, duration: 800 });
+    </script>
+</body>
+</html>

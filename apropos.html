@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>À Propos - SCH Immobilier</title>
+    <link rel="icon" type="image/png" href="logo-sch.png">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    
+    <style type="text/css">
+/* ========================================================================= */
+/* 1. VARIABLES & FONDAMENTAUX (Identiques à l'accueil) */
+/* ========================================================================= */
+:root {
+    --color-dark: #0A0A0A;
+    --color-medium: #111111;
+    --color-light: #F0F0F0;
+    --color-accent: #27a34a; 
+    --color-subtext: #999999;
+    --wa-green: #25D366; 
+    --font-heading: 'Orbitron', sans-serif;
+    --font-body: 'Roboto', sans-serif;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+body { font-family: var(--font-body); color: var(--color-light); background-color: var(--color-dark); line-height: 1.6; overflow-x: hidden; }
+.container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+.accent { color: var(--color-accent); }
+.section { padding: 80px 0; }
+.dark-section { background-color: var(--color-medium); }
+
+/* PRELOADER */
+#preloader { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: var(--color-dark); display: flex; justify-content: center; align-items: center; z-index: 9999; }
+.loader-logo { width: 150px; animation: pulse 1.5s infinite; }
+@keyframes pulse { 0%, 100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.1); opacity: 0.7; } }
+
+/* NAVIGATION */
+header { position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; background: rgba(10, 10, 10, 0.95); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(39, 163, 74, 0.2); }
+.nav-content { display: flex; justify-content: space-between; align-items: center; height: 90px; }
+.logo img { height: 65px; width: auto; }
+nav ul { list-style: none; display: flex; gap: 25px; }
+nav ul a { color: var(--color-subtext); text-decoration: none; font-weight: 500; font-size: 0.9rem; transition: 0.3s; }
+nav ul a:hover, nav ul a.active { color: var(--color-accent); }
+
+/* HERO PAGE A PROPOS */
+.page-hero { 
+    height: 50vh; 
+    background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('placeholder-gal-3.png');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding-top: 90px;
+    border-bottom: 2px solid var(--color-accent);
+}
+.page-hero h1 { font-family: var(--font-heading); font-size: 3rem; text-transform: uppercase; }
+
+/* CONTENU HISTOIRE */
+.about-detail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+.about-img-box { border-radius: 15px; overflow: hidden; border: 1px solid var(--color-accent); shadow: 0 0 20px rgba(39,163,74,0.2); }
+.about-img-box img { width: 100%; display: block; }
+
+/* EQUIPE */
+.team-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; margin-top: 50px; }
+.team-card { background: #1a1a1a; padding: 40px 20px; border-radius: 15px; text-align: center; border: 1px solid #333; transition: 0.3s; }
+.team-card:hover { border-color: var(--color-accent); transform: translateY(-10px); }
+.team-img { width: 150px; height: 150px; border-radius: 50%; object-fit: cover; margin: 0 auto 20px; border: 3px solid var(--color-accent); padding: 5px; }
+.team-card h4 { font-family: var(--font-heading); font-size: 1.2rem; margin-bottom: 5px; }
+.team-card span { color: var(--color-accent); font-weight: bold; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 1px; }
+
+/* ========================================================================= */
+/* FOOTER PRO (Copie exacte de l'accueil) */
+/* ========================================================================= */
+.footer-pro { background-color: #050505; padding: 80px 0 30px; border-top: 2px solid var(--color-accent); margin-top: 50px; }
+.footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1.2fr; gap: 40px; margin-bottom: 50px; }
+.footer-col h4 { font-family: var(--font-heading); font-size: 1.2rem; margin-bottom: 25px; position: relative; padding-bottom: 10px; }
+.footer-col h4::after { content: ''; position: absolute; left: 0; bottom: 0; width: 40px; height: 2px; background-color: var(--color-accent); }
+.footer-links { list-style: none; }
+.footer-links li { margin-bottom: 12px; }
+.footer-links a { color: var(--color-subtext); text-decoration: none; transition: 0.3s; }
+.footer-links a:hover { color: var(--color-accent); padding-left: 5px; }
+.social-links { display: flex; gap: 15px; margin-top: 20px; }
+.social-links a { width: 40px; height: 40px; background: #111; display: flex; align-items: center; justify-content: center; border-radius: 50%; color: white; transition: 0.3s; }
+.social-links a:hover { background: var(--color-accent); }
+
+/* WHATSAPP */
+/* --- BLOC WHATSAPP CHATBOX --- */
+#wa-widget { position: fixed; bottom: 30px; right: 30px; z-index: 2000; }
+.wa-btn { width: 60px; height: 60px; background: var(--wa-green); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 30px; cursor: pointer; box-shadow: 0 4px 15px rgba(0,0,0,0.3); transition: 0.3s; }
+
+.wa-chatbox {
+    position: absolute; bottom: 80px; right: 0; width: 300px; background: white; border-radius: 12px; overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.5); display: none; flex-direction: column; animation: slideIn 0.3s ease-out;
+}
+@keyframes slideIn { from { transform: translateY(15px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+
+.wa-header { background: var(--wa-green); color: white; padding: 15px; display: flex; align-items: center; gap: 10px; }
+.wa-header h4 { margin: 0; font-size: 0.9rem; color: white; font-family: var(--font-body); }
+.wa-body { background: #e5ddd5; padding: 15px; }
+.wa-msg { background: white; padding: 10px; border-radius: 0 10px 10px 10px; font-size: 0.85rem; color: #333; }
+.wa-footer { padding: 10px; background: white; }
+.wa-send-btn { background: var(--wa-green); color: white; padding: 8px; border-radius: 5px; text-decoration: none; font-weight: bold; display: block; text-align: center; font-size: 0.8rem; }
+
+@media (max-width: 900px) {
+    .nav-content nav { display: none; }
+    .about-detail-grid, .footer-grid { grid-template-columns: 1fr; }
+}
+    </style>
+</head>
+<body>
+
+    <div id="preloader">
+        <img src="logo-sch.png" alt="SCH" class="loader-logo">
+    </div>
+
+    <header>
+        <div class="container nav-content">
+            <a href="index.html" class="logo"><img src="logo-sch.png" alt="Logo SCH"></a>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Accueil</a></li>
+                    <li><a href="apropos.html" class="active">À Propos</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="galerie.html">Galerie</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="page-hero">
+        <div class="container" data-aos="zoom-out">
+            <h1>Qui sommes-<span class="accent">nous ?</span></h1>
+            <p style="color: var(--color-subtext); margin-top: 15px;">L'excellence et la sécurité foncière au cœur de notre métier.</p>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container about-detail-grid">
+            <div class="about-img-box" data-aos="fade-right">
+                <img src="logo-sch.png" alt="Equipe SCH">
+            </div>
+            <div class="about-text" data-aos="fade-left">
+                <h3 class="accent">NOTRE PARCOURS</h3>
+                <h2 style="font-family: var(--font-heading); margin-bottom: 20px;">Plus de 10 ans de confiance</h2>
+                <p>Depuis sa création, **SCH Immobilier** s'est donné pour mission de transformer le paysage immobilier au Cameroun. Trop souvent, l'acquisition de terrain est synonyme d'incertitude. Nous avons décidé d'en faire une expérience sereine et sécurisée.</p>
+                <br>
+                <p>Grâce à une maîtrise parfaite des procédures administratives et à un réseau d'experts qualifiés, nous garantissons à nos clients des biens **zéro litige**.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section dark-section">
+        <div class="container">
+            <div style="text-align: center; margin-bottom: 50px;">
+                <h2 style="font-family: var(--font-heading); text-transform: uppercase;">Les Visages de l'Excellence</h2>
+                <div style="width: 80px; height: 3px; background: var(--color-accent); margin: 20px auto;"></div>
+            </div>
+            
+            <div class="team-grid">
+                <div class="team-card" data-aos="fade-up">
+                    <img src="placeholder-gal-1.png" alt="Directeur" class="team-img">
+                    <h4>M. Samuel C.H.</h4>
+                    <span>Directeur Général</span>
+                    <p style="font-size: 0.85rem; color: var(--color-subtext); margin-top: 15px;">Visionnaire et expert en stratégies foncières complexes.</p>
+                </div>
+                <div class="team-card" data-aos="fade-up" data-aos-delay="200">
+                    <img src="placeholder-gal-2.png" alt="Topographe" class="team-img">
+                    <h4>Ing. Paul Nkem</h4>
+                    <span>Expert Topographe</span>
+                    <p style="font-size: 0.85rem; color: var(--color-subtext); margin-top: 15px;">Spécialiste des levés de précision et du bornage numérique.</p>
+                </div>
+                <div class="team-card" data-aos="fade-up" data-aos-delay="400">
+                    <img src="placeholder-about.pn" alt="Juriste" class="team-img">
+                    <h4>Me Alice Manga</h4>
+                    <span>Conseiller Juridique</span>
+                    <p style="font-size: 0.85rem; color: var(--color-subtext); margin-top: 15px;">Garante de la conformité de chaque titre foncier.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer-pro">
+        <div class="container footer-grid">
+            <div class="footer-col">
+                <img src="logo-sch.png" alt="Logo SCH" style="height:60px; margin-bottom:20px;">
+                <p>Votre partenaire de confiance pour la sécurisation foncière et immobilière au Cameroun.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Liens Utiles</h4>
+                <ul class="footer-links">
+                    <li><a href="index.html">Accueil</a></li>
+                    <li><a href="apropos.html">À Propos</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Nos Services</h4>
+                <ul class="footer-links">
+                    <li><a href="services.html">Vente de Terrains</a></li>
+                    <li><a href="services.html">Bornage Technique</a></li>
+                    <li><a href="services.html">Vérification de Titre</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Contact</h4>
+                <p>Douala - Cameroun</p>
+                <p>+237 6xx xx xx xx</p>
+                <p>contact@sch-immo.cm</p>
+            </div>
+        </div>
+        <div class="container" style="border-top: 1px solid #1a1a1a; padding-top: 30px; text-align: center; color: var(--color-subtext); font-size: 0.9rem;">
+            &copy; 2025 SCH Immobilier. Tous droits réservés.
+        </div>
+    </footer>
+
+   
+   <div id="wa-widget">
+    <div class="wa-chatbox" id="wa-chat">
+        <div class="wa-header">
+            <i class="fab fa-whatsapp fa-2x"></i>
+            <div>
+                <h4>Support SCH</h4>
+                <small style="color:rgba(255,255,255,0.8)">En ligne</small>
+            </div>
+        </div>
+        <div class="wa-body">
+            <div class="wa-msg">Bonjour ! Comment pouvons-nous vous aider ?</div>
+        </div>
+        <div class="wa-footer">
+            <a href="https://wa.me/237600000000" target="_blank" class="wa-send-btn">Démarrer la discussion</a>
+        </div>
+    </div>
+    <div class="wa-btn" id="wa-toggle"><i class="fab fa-whatsapp"></i></div>
+</div>
+
+
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script>
+        // Masquer preloader G97C@gE4jX-@tWd
+        window.addEventListener('load', function() {
+            const preloader = document.getElementById('preloader');
+            setTimeout(() => { preloader.style.opacity = '0'; setTimeout(() => preloader.style.display = 'none', 500); }, 1500);
+        });
+
+        // Gestion de la Chatbox WhatsApp
+const waToggle = document.getElementById('wa-toggle');
+const waChat = document.getElementById('wa-chat');
+
+waToggle.addEventListener('click', () => {
+    waChat.style.display = (waChat.style.display === 'flex') ? 'none' : 'flex';
+});
+
+// Fermer la chatbox si on clique ailleurs sur la page
+document.addEventListener('click', (e) => {
+    if (!document.getElementById('wa-widget').contains(e.target)) {
+        waChat.style.display = 'none';
+    }
+});
+        AOS.init({ once: true, duration: 800 });
+    </script>
+</body>
+</html>

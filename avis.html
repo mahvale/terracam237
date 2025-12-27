@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Avis Clients - SCH Immobilier</title>
+    <link rel="icon" type="image/png" href="logo-sch.png">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    
+    <style type="text/css">
+/* ========================================================================= */
+/* 1. VARIABLES & FONDAMENTAUX */
+/* ========================================================================= */
+:root {
+    --color-dark: #0A0A0A;
+    --color-medium: #111111;
+    --color-light: #F0F0F0;
+    --color-accent: #27a34a; 
+    --color-subtext: #999999;
+    --wa-green: #25D366; 
+    --font-heading: 'Orbitron', sans-serif;
+    --font-body: 'Roboto', sans-serif;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+body { font-family: var(--font-body); color: var(--color-light); background-color: var(--color-dark); line-height: 1.6; overflow-x: hidden; }
+.container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+.accent { color: var(--color-accent); }
+.section { padding: 80px 0; }
+
+/* PRELOADER */
+#preloader { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: var(--color-dark); display: flex; justify-content: center; align-items: center; z-index: 9999; }
+.loader-logo { width: 150px; animation: pulse 1.5s infinite; }
+@keyframes pulse { 0%, 100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.1); opacity: 0.7; } }
+
+/* NAVIGATION */
+header { position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; background: rgba(10, 10, 10, 0.95); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(39, 163, 74, 0.2); }
+.nav-content { display: flex; justify-content: space-between; align-items: center; height: 90px; }
+.logo img { height: 65px; width: auto; }
+nav ul { list-style: none; display: flex; gap: 25px; }
+nav ul a { color: var(--color-subtext); text-decoration: none; font-weight: 500; font-size: 0.9rem; transition: 0.3s; }
+nav ul a:hover, nav ul a.active { color: var(--color-accent); }
+
+/* HERO AVIS */
+.review-hero { 
+    height: 45vh; 
+    background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('placeholder-about.png');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding-top: 90px;
+}
+
+/* SCORE BOARD */
+.score-board { 
+    background: var(--color-medium); 
+    padding: 40px; 
+    border-radius: 20px; 
+    display: flex; 
+    justify-content: space-around; 
+    align-items: center; 
+    margin-top: -60px; 
+    border: 1px solid #333;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+.score-item { text-align: center; }
+.score-item h2 { font-family: var(--font-heading); font-size: 3rem; color: var(--color-accent); }
+.stars { color: #f1c40f; font-size: 1.2rem; }
+
+/* GRILLE AVIS */
+.reviews-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px; margin-top: 60px; }
+.review-card { 
+    background: #1a1a1a; 
+    padding: 40px; 
+    border-radius: 15px; 
+    position: relative; 
+    border: 1px solid #222; 
+    transition: 0.3s; 
+}
+.review-card:hover { border-color: var(--color-accent); transform: translateY(-5px); }
+.review-card i.quote { position: absolute; top: 20px; right: 20px; font-size: 2rem; opacity: 0.1; color: var(--color-accent); }
+.user-profile { display: flex; align-items: center; gap: 15px; margin-bottom: 20px; }
+.user-profile img { width: 60px; height: 60px; border-radius: 50%; object-fit: cover; border: 2px solid var(--color-accent); }
+.user-profile h5 { font-family: var(--font-heading); font-size: 1rem; }
+.user-profile span { color: var(--color-subtext); font-size: 0.8rem; }
+
+/* FORMULAIRE AVIS */
+.add-review-section { background: var(--color-medium); border-radius: 20px; padding: 60px; margin-top: 80px; border: 1px solid #222; }
+.form-group { margin-bottom: 20px; }
+.form-group input, .form-group textarea { 
+    width: 100%; 
+    background: #0a0a0a; 
+    border: 1px solid #333; 
+    padding: 15px; 
+    color: white; 
+    border-radius: 8px; 
+    font-family: inherit;
+}
+.btn-submit { 
+    background: var(--color-accent); 
+    color: white; 
+    border: none; 
+    padding: 15px 40px; 
+    border-radius: 5px; 
+    font-family: var(--font-heading); 
+    font-weight: bold; 
+    cursor: pointer; 
+    transition: 0.3s; 
+}
+.btn-submit:hover { box-shadow: 0 0 20px var(--color-accent); }
+
+/* FOOTER PRO */
+.footer-pro { background-color: #050505; padding: 80px 0 30px; border-top: 2px solid var(--color-accent); margin-top: 80px; }
+.footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1.2fr; gap: 40px; margin-bottom: 50px; }
+.footer-col h4 { font-family: var(--font-heading); margin-bottom: 25px; position: relative; padding-bottom: 10px; }
+.footer-col h4::after { content: ''; position: absolute; left: 0; bottom: 0; width: 40px; height: 2px; background: var(--color-accent); }
+.footer-links { list-style: none; }
+.footer-links li { margin-bottom: 12px; }
+.footer-links a { color: var(--color-subtext); text-decoration: none; transition: 0.3s; }
+.footer-links a:hover { color: var(--color-accent); }
+
+@media (max-width: 768px) {
+    .score-board { flex-direction: column; gap: 30px; margin-top: -30px; }
+    .nav-content nav { display: none; }
+    .footer-grid { grid-template-columns: 1fr; }
+}
+    </style>
+</head>
+<body>
+
+    <div id="preloader">
+        <img src="logo-sch.png" alt="SCH" class="loader-logo">
+    </div>
+
+    <header>
+        <div class="container nav-content">
+            <a href="index.html" class="logo"><img src="logo-sch.png" alt="Logo SCH"></a>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Accueil</a></li>
+                    <li><a href="apropos.html">À Propos</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="galerie.html">Galerie</a></li>
+                    <li><a href="avis.html" class="active">Avis</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="review-hero">
+        <div class="container" data-aos="zoom-in">
+            <h1 style="font-family: var(--font-heading);">Votre <span class="accent">Satisfaction</span>, <br>Notre Priorité</h1>
+        </div>
+    </section>
+
+    <section class="container">
+        <div class="score-board" data-aos="fade-up">
+            <div class="score-item">
+                <h2>4.9/5</h2>
+                <div class="stars">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                </div>
+                <p style="color: var(--color-subtext); margin-top: 10px;">Basé sur 250+ avis Google</p>
+            </div>
+            <div class="score-item" style="border-left: 1px solid #333; border-right: 1px solid #333; padding: 0 40px;">
+                <h2>98%</h2>
+                <p style="color: var(--color-subtext);">De clients satisfaits</p>
+            </div>
+            <div class="score-item">
+                <h2>10+</h2>
+                <p style="color: var(--color-subtext);">Années d'excellence</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="reviews-grid">
+                
+                <div class="review-card" data-aos="fade-up">
+                    <i class="fas fa-quote-right quote"></i>
+                    <div class="user-profile">
+                        <img src="placeholder-gal-5.png" alt="Client">
+                        <div>
+                            <h5>M. Marc Etoundi</h5>
+                            <span>Investisseur (Yaoundé)</span>
+                        </div>
+                    </div>
+                    <div class="stars" style="margin-bottom: 15px;">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p>"Service irréprochable. SCH m'a aidé à vérifier un terrain qui s'est avéré être un litige. Ils m'ont sauvé des millions. Merci encore !"</p>
+                </div>
+
+                <div class="review-card" data-aos="fade-up" data-aos-delay="200">
+                    <i class="fas fa-quote-right quote"></i>
+                    <div class="user-profile">
+                        <img src="placeholder-about.png" alt="Client">
+                        <div>
+                            <h5>Mme Sandra K.</h5>
+                            <span>Propriétaire (Douala)</span>
+                        </div>
+                    </div>
+                    <div class="stars" style="margin-bottom: 15px;">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p>"J'ai loué un appartement haut standing via leur service de gestion. Tout est conforme aux photos, propre et bien situé. Je recommande vivement."</p>
+                </div>
+
+                <div class="review-card" data-aos="fade-up" data-aos-delay="400">
+                    <i class="fas fa-quote-right quote"></i>
+                    <div class="user-profile">
+                        <img src="placeholder-carousel-1.png" alt="Client">
+                        <div>
+                            <h5>Ing. Fabrice N.</h5>
+                            <span>Entrepreneur</span>
+                        </div>
+                    </div>
+                    <div class="stars" style="margin-bottom: 15px;">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                    </div>
+                    <p>"Leur équipe de topographes est la plus précise avec laquelle j'ai travaillé. Un matériel moderne et un rapport clair envoyé en 48h."</p>
+                </div>
+
+            </div>
+
+            <div class="add-review-section" data-aos="zoom-in">
+                <div style="text-align: center; margin-bottom: 40px;">
+                    <h2 style="font-family: var(--font-heading);">Laissez votre <span class="accent">Témoignage</span></h2>
+                    <p style="color: var(--color-subtext);">Votre avis nous aide à nous améliorer chaque jour.</p>
+                </div>
+                <form action="#">
+                    <div class="reviews-grid" style="margin-top: 0; gap: 20px;">
+                        <div class="form-group">
+                            <input type="text" placeholder="Votre Nom Complet" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" placeholder="Ville / Profession">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <textarea rows="5" placeholder="Partagez votre expérience avec SCH Immobilier..."></textarea>
+                    </div>
+                    <div style="text-align: center;">
+                        <button type="submit" class="btn-submit">Publier mon avis</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer-pro">
+        <div class="container footer-grid">
+            <div class="footer-col">
+                <img src="logo-sch.png" alt="Logo SCH" style="height:60px; margin-bottom:20px;">
+                <p>La référence de la sécurité immobilière au Cameroun.</p>
+                <div class="social-links" style="display: flex; margin-top: 20px;">
+                    <a href="#" style="color: white; margin-right: 15px;"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" style="color: white; margin-right: 15px;"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Menu</h4>
+                <ul class="footer-links">
+                    <li><a href="index.html">Accueil</a></li>
+                    <li><a href="apropos.html">À Propos</a></li>
+                    <li><a href="galerie.html">Galerie</a></li>
+                    <li><a href="avis.html">Avis</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Nos Services</h4>
+                <ul class="footer-links">
+                    <li><a href="services.html">Topographie</a></li>
+                    <li><a href="services.html">Vente de terrains</a></li>
+                    <li><a href="services.html">Gestion locative</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Contact</h4>
+                <p>Douala - Cameroun</p>
+                <p>info@sch-immo.cm</p>
+            </div>
+        </div>
+        <div style="text-align: center; border-top: 1px solid #1a1a1a; padding-top: 30px; color: #555; font-size: 0.9rem;">
+            &copy; 2025 SCH Immobilier. Tous droits réservés.
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script>
+        window.addEventListener('load', function() {
+            const preloader = document.getElementById('preloader');
+            setTimeout(() => { preloader.style.opacity = '0'; setTimeout(() => preloader.style.display = 'none', 500); }, 1500);
+        });
+        AOS.init({ once: true, duration: 800 });
+    </script>
+</body>
+</html>
