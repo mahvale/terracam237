@@ -10,134 +10,160 @@
     <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
     
     <style type="text/css">
-/* ========================================================================= */
-/* 1. VARIABLES & FONDAMENTAUX */
-/* ========================================================================= */
-:root {
-    --color-dark: #0A0A0A;
-    --color-medium: #111111;
-    --color-light: #F0F0F0;
-    --color-accent: #27a34a; 
-    --color-subtext: #999999;
-    --wa-green: #25D366; 
-    --font-heading: 'Orbitron', sans-serif;
-    --font-body: 'Roboto', sans-serif;
-}
+        :root {
+            --color-dark: #0A0A0A;
+            --color-medium: #111111;
+            --color-light: #F0F0F0;
+            --color-accent: #27a34a; 
+            --color-subtext: #999999;
+            --wa-green: #25D366; 
+            --font-heading: 'Orbitron', sans-serif;
+            --font-body: 'Roboto', sans-serif;
+        }
 
-* { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
-body { font-family: var(--font-body); color: var(--color-light); background-color: var(--color-dark); line-height: 1.6; overflow-x: hidden; }
-.container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-.accent { color: var(--color-accent); }
-.section { padding: 80px 0; }
+        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+        body { font-family: var(--font-body); color: var(--color-light); background-color: var(--color-dark); line-height: 1.6; overflow-x: hidden; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        .accent { color: var(--color-accent); }
+        .section { padding: 80px 0; }
 
-/* PRELOADER */
-#preloader { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: var(--color-dark); display: flex; justify-content: center; align-items: center; z-index: 9999; }
-.loader-logo { width: 150px; animation: pulse 1.5s infinite; }
-@keyframes pulse { 0%, 100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.1); opacity: 0.7; } }
+        /* PRELOADER */
+        #preloader { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: var(--color-dark); display: flex; justify-content: center; align-items: center; z-index: 9999; }
+        .loader-logo { width: 150px; animation: pulse 1.5s infinite; }
+        @keyframes pulse { 0%, 100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.1); opacity: 0.7; } }
 
-/* NAVIGATION (Identique aux autres pages) */
-header { position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; background: rgba(10, 10, 10, 0.95); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(39, 163, 74, 0.2); }
-.nav-content { display: flex; justify-content: space-between; align-items: center; height: 90px; }
-.logo img { height: 65px; width: auto; }
-nav ul { list-style: none; display: flex; gap: 25px; }
-nav ul a { color: var(--color-subtext); text-decoration: none; font-weight: 500; font-size: 0.9rem; transition: 0.3s; }
-nav ul a:hover, nav ul a.active { color: var(--color-accent); }
+        /* NAVIGATION */
+        header { position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; background: rgba(10, 10, 10, 0.95); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(39, 163, 74, 0.2); }
+        .nav-content { display: flex; justify-content: space-between; align-items: center; height: 90px; }
+        .logo img { height: 65px; width: auto; }
+        nav ul { list-style: none; display: flex; gap: 25px; }
+        nav ul a { color: var(--color-subtext); text-decoration: none; font-weight: 500; font-size: 0.9rem; transition: 0.3s; }
+        nav ul a:hover, nav ul a.active { color: var(--color-accent); }
 
-/* HERO GALERIE */
-.gallery-hero { 
-    height: 40vh; 
-    background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('placeholder-gal-3.png');
-    background-size: cover;
-    background-position: center;
-    display: flex;
-    align-items: center;
+        /* HERO GALERIE */
+        .gallery-hero { 
+            height: 40vh; 
+            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('placeholder-gal-3.png');
+            background-size: cover;
+            background-position: center;
+            display: flex; align-items: center; justify-content: center; text-align: center; padding-top: 90px;
+        }
+        .gallery-hero h1 { font-family: var(--font-heading); font-size: 2.5rem; text-transform: uppercase; }
+
+        /* FILTRES */
+        .filter-container { text-align: center; margin: 40px 0; display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
+        .filter-btn { 
+            background: transparent; border: 1px solid #333; color: var(--color-light); 
+            padding: 10px 25px; cursor: pointer; font-family: var(--font-heading); 
+            font-size: 0.75rem; border-radius: 50px; transition: 0.3s; 
+        }
+        .filter-btn:hover, .filter-btn.active { background: var(--color-accent); border-color: var(--color-accent); }
+
+        /* GRILLE GALERIE */
+        .gallery-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); 
+            gap: 20px; 
+        }
+        .gallery-card { 
+            position: relative; border-radius: 12px; overflow: hidden; height: 300px; 
+            cursor: pointer; border: 1px solid #222; background: #000;
+        }
+        .gallery-card img, .gallery-card video { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
+        .gallery-card:hover img { transform: scale(1.1); }
+
+        /* INDICATEUR VIDÉO (Icône Play) */
+        .gallery-card.video::after {
+            content: '\f144'; font-family: 'Font Awesome 6 Free'; font-weight: 900;
+            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            font-size: 3rem; color: white; opacity: 0.6; z-index: 2; pointer-events: none; transition: 0.3s;
+        }
+        .gallery-card.video:hover::after { opacity: 0; }
+
+        .gallery-info { 
+            position: absolute; bottom: 0; left: 0; width: 100%; padding: 20px; 
+            background: linear-gradient(transparent, rgba(0,0,0,0.9)); 
+            transform: translateY(100%); transition: 0.4s; z-index: 3;
+        }
+        .gallery-card:hover .gallery-info { transform: translateY(0); }
+        .gallery-info h4 { font-family: var(--font-heading); font-size: 0.9rem; margin-bottom: 5px; }
+        .gallery-info span { color: var(--color-accent); font-size: 0.75rem; font-weight: bold; }
+
+        /* FOOTER */
+        .footer-pro { background-color: #050505; padding: 80px 0 30px; border-top: 2px solid var(--color-accent); margin-top: 50px; }
+        .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1.2fr; gap: 40px; margin-bottom: 50px; }
+        .footer-col h4 { font-family: var(--font-heading); font-size: 1.1rem; margin-bottom: 25px; position: relative; padding-bottom: 10px; }
+        .footer-col h4::after { content: ''; position: absolute; left: 0; bottom: 0; width: 40px; height: 2px; background-color: var(--color-accent); }
+        .footer-links { list-style: none; }
+        .footer-links a { color: var(--color-subtext); text-decoration: none; transition: 0.3s; font-size: 0.9rem; }
+        .footer-links a:hover { color: var(--color-accent); padding-left: 5px; }
+
+        /* WHATSAPP */
+        #wa-widget { position: fixed; bottom: 30px; right: 30px; z-index: 2000; }
+        .wa-btn { width: 60px; height: 60px; background: var(--wa-green); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 30px; cursor: pointer; box-shadow: 0 4px 15px rgba(0,0,0,0.3); }
+        .wa-chatbox { position: absolute; bottom: 80px; right: 0; width: 280px; background: white; border-radius: 12px; display: none; flex-direction: column; box-shadow: 0 10px 25px rgba(0,0,0,0.5); }
+        .wa-header { background: var(--wa-green); color: white; padding: 15px; border-radius: 12px 12px 0 0; }
+        .wa-send-btn { background: var(--wa-green); color: white; padding: 10px; border-radius: 5px; text-decoration: none; display: block; text-align: center; margin: 10px; font-weight: bold; }
+
+        /* LIGHTBOX MODAL STYLES */
+.lightbox {
+    display: none; /* Caché par défaut */
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.95);
+    backdrop-filter: blur(5px);
     justify-content: center;
-    text-align: center;
-    padding-top: 90px;
+    align-items: center;
 }
-.gallery-hero h1 { font-family: var(--font-heading); font-size: 2.5rem; text-transform: uppercase; }
 
-/* FILTRES */
-.filter-container { text-align: center; margin: 40px 0; }
-.filter-btn { 
-    background: transparent; 
-    border: 1px solid #333; 
-    color: var(--color-light); 
-    padding: 10px 25px; 
-    margin: 5px; 
-    cursor: pointer; 
-    font-family: var(--font-heading); 
-    font-size: 0.8rem; 
-    border-radius: 50px; 
-    transition: 0.3s; 
+.lightbox-content {
+    position: relative;
+    width: 90%;
+    max-width: 1000px;
+    background: #000;
+    border: 2px solid var(--color-accent);
+    border-radius: 8px;
+    overflow: hidden;
+    line-height: 0; /* Évite les espaces sous la vidéo */
 }
-.filter-btn:hover, .filter-btn.active { background: var(--color-accent); border-color: var(--color-accent); }
 
-/* GRILLE GALERIE */
-.gallery-grid { 
-    display: grid; 
-    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); 
-    gap: 20px; 
+.lightbox-content video {
+    width: 100%;
+    height: auto;
 }
-.gallery-card { 
-    position: relative; 
-    border-radius: 12px; 
-    overflow: hidden; 
-    height: 300px; 
-    cursor: pointer; 
-    border: 1px solid #222;
+
+.close-lightbox {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    color: white;
+    font-size: 50px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+    z-index: 10000;
 }
-.gallery-card img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
-.gallery-card:hover img { transform: scale(1.1); }
 
-.gallery-info { 
-    position: absolute; 
-    bottom: 0; left: 0; width: 100%; 
-    padding: 20px; 
-    background: linear-gradient(transparent, rgba(0,0,0,0.9)); 
-    transform: translateY(100%); 
-    transition: 0.4s; 
+.close-lightbox:hover {
+    color: var(--color-accent);
 }
-.gallery-card:hover .gallery-info { transform: translateY(0); }
-.gallery-info h4 { font-family: var(--font-heading); font-size: 1rem; margin-bottom: 5px; }
-.gallery-info span { color: var(--color-accent); font-size: 0.8rem; font-weight: bold; }
 
-/* ========================================================================= */
-/* FOOTER PRO (Identique) */
-/* ========================================================================= */
-.footer-pro { background-color: #050505; padding: 80px 0 30px; border-top: 2px solid var(--color-accent); margin-top: 50px; }
-.footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1.2fr; gap: 40px; margin-bottom: 50px; }
-.footer-col h4 { font-family: var(--font-heading); font-size: 1.2rem; margin-bottom: 25px; position: relative; padding-bottom: 10px; }
-.footer-col h4::after { content: ''; position: absolute; left: 0; bottom: 0; width: 40px; height: 2px; background-color: var(--color-accent); }
-.footer-links { list-style: none; }
-.footer-links a { color: var(--color-subtext); text-decoration: none; transition: 0.3s; font-size: 0.9rem; }
-.footer-links li { margin-bottom: 12px; }
-.footer-links a:hover { color: var(--color-accent); padding-left: 5px; }
-.social-links a { width: 40px; height: 40px; background: #111; display: flex; align-items: center; justify-content: center; border-radius: 50%; color: white; margin-right: 10px; transition: 0.3s; }
-.social-links a:hover { background: var(--color-accent); }
-
-/* WHATSAPP */
-/* --- BLOC WHATSAPP CHATBOX --- */
-#wa-widget { position: fixed; bottom: 30px; right: 30px; z-index: 2000; }
-.wa-btn { width: 60px; height: 60px; background: var(--wa-green); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 30px; cursor: pointer; box-shadow: 0 4px 15px rgba(0,0,0,0.3); transition: 0.3s; }
-
-.wa-chatbox {
-    position: absolute; bottom: 80px; right: 0; width: 300px; background: white; border-radius: 12px; overflow: hidden;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.5); display: none; flex-direction: column; animation: slideIn 0.3s ease-out;
+@media (max-width: 768px) {
+    .lightbox-content { width: 95%; }
 }
-@keyframes slideIn { from { transform: translateY(15px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
 
-.wa-header { background: var(--wa-green); color: white; padding: 15px; display: flex; align-items: center; gap: 10px; }
-.wa-header h4 { margin: 0; font-size: 0.9rem; color: white; font-family: var(--font-body); }
-.wa-body { background: #e5ddd5; padding: 15px; }
-.wa-msg { background: white; padding: 10px; border-radius: 0 10px 10px 10px; font-size: 0.85rem; color: #333; }
-.wa-footer { padding: 10px; background: white; }
-.wa-send-btn { background: var(--wa-green); color: white; padding: 8px; border-radius: 5px; text-decoration: none; font-weight: bold; display: block; text-align: center; font-size: 0.8rem; }
-
-@media (max-width: 900px) {
-    .nav-content nav { display: none; }
-    .footer-grid { grid-template-columns: 1fr; }
-}
+        /* RESPONSIVE */
+        @media (max-width: 900px) {
+            .nav-content nav { display: none; }
+            .footer-grid { grid-template-columns: 1fr; text-align: center; }
+            .footer-col h4::after { left: 50%; transform: translateX(-50%); }
+            .gallery-grid { grid-template-columns: 1fr; }
+            .gallery-hero h1 { font-size: 1.8rem; }
+        }
     </style>
 </head>
 <body>
@@ -164,70 +190,85 @@ nav ul a:hover, nav ul a.active { color: var(--color-accent); }
     <section class="gallery-hero">
         <div class="container" data-aos="zoom-in">
             <h1>Notre <span class="accent">Portfolio</span></h1>
-            <p style="color: var(--color-subtext); margin-top: 15px;">Découvrez nos terrains sécurisés et nos résidences de haut standing.</p>
+            <p style="color: var(--color-subtext); margin-top: 15px;">Visualisez la qualité et la sécurité de nos projets immobiliers.</p>
         </div>
     </section>
 
     <section class="section">
         <div class="container">
-            
             <div class="filter-container" data-aos="fade-up">
                 <button class="filter-btn active" onclick="filterGallery('all')">TOUT VOIR</button>
                 <button class="filter-btn" onclick="filterGallery('terrain')">TERRAINS</button>
                 <button class="filter-btn" onclick="filterGallery('villa')">VILLAS & APPARTS</button>
-                <button class="filter-btn" onclick="filterGallery('topo')">CHANTIERS / TOPO</button>
+                <button class="filter-btn" onclick="filterGallery('video')">VIDÉOS</button>
+                <button class="filter-btn" onclick="filterGallery('topo')">CHANTIERS</button>
             </div>
 
             <div class="gallery-grid">
                 <div class="gallery-card item villa" data-aos="fade-up">
-                    <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=600" alt="Villa Douala">
+                    <img src="img6.jpg" alt="Villa">
                     <div class="gallery-info">
                         <h4>Résidence Le Palmier</h4>
-                        <span>DOUALA - BONAPRISO</span>
                     </div>
                 </div>
 
-                <div class="gallery-card item terrain" data-aos="fade-up" data-aos-delay="100">
-                    <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?q=80&w=600" alt="Terrain">
+                <div class="gallery-card item video" data-aos="fade-up" data-aos-delay="100">
+                    <video src="video1.mp4" muted loop onmouseover="this.play()" onmouseout="this.pause()"></video>
                     <div class="gallery-info">
-                        <h4>Lotissement Titré</h4>
+                        <h4>Visite Terrain SOA</h4>
+                        <span><i class="fas fa-play-circle"></i> LIRE LA VIDÉO</span>
+                    </div>
+                </div>
+
+                <div class="gallery-card item video" data-aos="fade-up" data-aos-delay="100">
+                    <video src="video2.mp4" muted loop onmouseover="this.play()" onmouseout="this.pause()"></video>
+                    <div class="gallery-info">
+                        <h4>Visite Terrain SOA</h4>
+                        <span><i class="fas fa-play-circle"></i> LIRE LA VIDÉO</span>
+                    </div>
+                </div>
+
+
+                   <div class="gallery-card item video" data-aos="fade-up" data-aos-delay="100">
+                    <video src="video3.mp4" muted loop onmouseover="this.play()" onmouseout="this.pause()"></video>
+                    <div class="gallery-info">
+                        <h4>Visite Terrain SOA</h4>
+                        <span><i class="fas fa-play-circle"></i> LIRE LA VIDÉO</span>
+                    </div>
+                </div>
+
+                    <div class="gallery-card item video" data-aos="fade-up" data-aos-delay="100">
+                    <video src="video4.mp4" muted loop onmouseover="this.play()" onmouseout="this.pause()"></video>
+                    <div class="gallery-info">
+                        <h4>Visite Terrain SOA</h4>
+                        <span><i class="fas fa-play-circle"></i> LIRE LA VIDÉO</span>
+                    </div>
+                </div>
+
+                 <div class="gallery-card item video" data-aos="fade-up" data-aos-delay="100">
+                    <video src="video5.mp4" muted loop onmouseover="this.play()" onmouseout="this.pause()"></video>
+                    <div class="gallery-info">
+                        <h4>Visite Terrain SOA</h4>
+                        <span><i class="fas fa-play-circle"></i> LIRE LA VIDÉO</span>
+                    </div>
+                </div>
+
+                <div class="gallery-card item terrain" data-aos="fade-up" data-aos-delay="200">
+                    <img src="img1.jpg" alt="Terrain">
+                    <div class="gallery-info">
+                        <h4>Lotissement Sécurisé</h4>
                         <span>YAOUNDÉ - SOA</span>
                     </div>
                 </div>
 
-                <div class="gallery-card item topo" data-aos="fade-up" data-aos-delay="200">
-                    <img src="https://images.unsplash.com/photo-1541888946425-d81bb19480c5?q=80&w=600" alt="Topographie">
+                <div class="gallery-card item video" data-aos="fade-up">
+                    <video src="video2.mp4" muted loop onmouseover="this.play()" onmouseout="this.pause()"></video>
                     <div class="gallery-info">
-                        <h4>Bornage Technique</h4>
-                        <span>KRIBI - ZONE CÔTIÈRE</span>
-                    </div>
-                </div>
-
-                <div class="gallery-card item villa" data-aos="fade-up">
-                    <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=600" alt="Appartement">
-                    <div class="gallery-info">
-                        <h4>Appartements Haut Standing</h4>
-                        <span>DOUALA - AKWA</span>
-                    </div>
-                </div>
-
-                <div class="gallery-card item terrain" data-aos="fade-up" data-aos-delay="100">
-                    <img src="https://images.unsplash.com/photo-1593510987185-1ec2256148a3?q=80&w=600" alt="Terrain">
-                    <div class="gallery-info">
-                        <h4>Terrain 500m²</h4>
-                        <span>LIMBE</span>
-                    </div>
-                </div>
-
-                <div class="gallery-card item topo" data-aos="fade-up" data-aos-delay="200">
-                    <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=600" alt="Chantier">
-                    <div class="gallery-info">
-                        <h4>Suivi de Chantier</h4>
-                        <span>DOUALA - LOGPOM</span>
+                        <h4>Aménagement Foncier</h4>
+                        <span>DÉMONSTRATION TECHNIQUE</span>
                     </div>
                 </div>
             </div>
-
         </div>
     </section>
 
@@ -235,77 +276,72 @@ nav ul a:hover, nav ul a.active { color: var(--color-accent); }
         <div class="container footer-grid">
             <div class="footer-col">
                 <img src="logo-sch.png" alt="Logo SCH" style="height:60px; margin-bottom:20px;">
-                <p>Leader de la sécurisation foncière au Cameroun. Votre projet est notre priorité.</p>
-                <div class="social-links" style="display: flex;">
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                </div>
+                <p>Votre partenaire de confiance pour l'acquisition de terrains titrés au Cameroun.</p>
             </div>
             <div class="footer-col">
-                <h4>Navigation</h4>
+                <h4>Lien Rapides</h4>
                 <ul class="footer-links">
                     <li><a href="index.html">Accueil</a></li>
-                    <li><a href="apropos.html">À Propos</a></li>
-                    <li><a href="services.html">Services</a></li>
                     <li><a href="galerie.html">Galerie</a></li>
+                    <li><a href="contact.html">Contact</a></li>
                 </ul>
             </div>
             <div class="footer-col">
                 <h4>Secteurs</h4>
                 <ul class="footer-links">
-                    <li><a href="#">Douala</a></li>
-                    <li><a href="#">Yaoundé</a></li>
-                    <li><a href="#">Kribi</a></li>
-                    <li><a href="#">Bafoussam</a></li>
+                    <li><a>Yaoundé / Soa</a></li>
+                    <li><a>Douala / Kribi</a></li>
                 </ul>
             </div>
             <div class="footer-col">
                 <h4>Contact</h4>
-                <p>+237 6xx xx xx xx</p>
-                <p>info@sch-immo.cm</p>
+                <p>+237 657 142 375</p>
+                <p>schsa@gmail.com</p>
             </div>
         </div>
-        <div class="container" style="border-top: 1px solid #1a1a1a; padding-top: 30px; text-align: center; color: var(--color-subtext); font-size: 0.9rem;">
-            &copy; 2025 SCH Immobilier. Tous droits réservés.
+        <div class="container" style="border-top: 1px solid #1a1a1a; padding-top: 30px; text-align: center; color: var(--color-subtext); font-size: 0.8rem;">
+            &copy; 2025 SCH Promoteur Immobilier. Tous droits réservés.
         </div>
     </footer>
 
-   <div id="wa-widget">
-    <div class="wa-chatbox" id="wa-chat">
-        <div class="wa-header">
-            <i class="fab fa-whatsapp fa-2x"></i>
-            <div>
-                <h4>Support SCH</h4>
-                <small style="color:rgba(255,255,255,0.8)">En ligne</small>
+    <div id="wa-widget">
+        <div class="wa-chatbox" id="wa-chat">
+            <div class="wa-header">
+                <h4 class="m-0"><i class="fab fa-whatsapp"></i> Support SCH</h4>
+                <small>En ligne</small>
             </div>
+            <div style="padding:15px; background:#e5ddd5; font-size:0.85rem; color:#333;">
+                Besoin d'une vidéo complète d'un site ? Écrivez-nous !
+            </div>
+            <a href="https://wa.me/237657142375" target="_blank" class="wa-send-btn">Démarrer WhatsApp</a>
         </div>
-        <div class="wa-body">
-            <div class="wa-msg">Bonjour ! Comment pouvons-nous vous aider ?</div>
-        </div>
-        <div class="wa-footer">
-            <a href="https://wa.me/237600000000" target="_blank" class="wa-send-btn">Démarrer la discussion</a>
-        </div>
+        <div class="wa-btn" id="wa-toggle"><i class="fab fa-whatsapp"></i></div>
     </div>
-    <div class="wa-btn" id="wa-toggle"><i class="fab fa-whatsapp"></i></div>
+
+    <div id="videoLightbox" class="lightbox">
+    <span class="close-lightbox">&times;</span>
+    <div class="lightbox-content">
+        <video id="lightboxVideo" controls autoplay>
+            <source src="" type="video/mp4">
+            Votre navigateur ne supporte pas la lecture de vidéos.
+        </video>
+    </div>
 </div>
 
     <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
     <script>
-        // Masquer preloader
-        window.addEventListener('load', function() {
-            const preloader = document.getElementById('preloader');
-            setTimeout(() => { preloader.style.opacity = '0'; setTimeout(() => preloader.style.display = 'none', 500); }, 1500);
+        // Preloader
+        window.addEventListener('load', () => {
+            const pre = document.getElementById('preloader');
+            setTimeout(() => { pre.style.opacity = '0'; setTimeout(() => pre.style.display = 'none', 500); }, 1000);
         });
 
-        // Fonction de filtrage
+        // Filtrage
         function filterGallery(category) {
             const items = document.querySelectorAll('.item');
             const btns = document.querySelectorAll('.filter-btn');
-
-            // Active button class
             btns.forEach(btn => btn.classList.remove('active'));
-            event.target.classList.add('active');
+            if(event) event.target.classList.add('active');
 
             items.forEach(item => {
                 if (category === 'all' || item.classList.contains(category)) {
@@ -318,22 +354,47 @@ nav ul a:hover, nav ul a.active { color: var(--color-accent); }
             });
         }
 
-        // Gestion de la Chatbox WhatsApp
-const waToggle = document.getElementById('wa-toggle');
-const waChat = document.getElementById('wa-chat');
+        // WhatsApp
+        const waToggle = document.getElementById('wa-toggle');
+        const waChat = document.getElementById('wa-chat');
+        waToggle.addEventListener('click', () => {
+            waChat.style.display = (waChat.style.display === 'flex') ? 'none' : 'flex';
+        });
 
-waToggle.addEventListener('click', () => {
-    waChat.style.display = (waChat.style.display === 'flex') ? 'none' : 'flex';
+        // GESTION DE LA LIGHTBOX
+const lightbox = document.getElementById("videoLightbox");
+const lightboxVid = document.getElementById("lightboxVideo");
+const closeBtn = document.querySelector(".close-lightbox");
+
+// Sélectionner toutes les cartes vidéo
+const videoCards = document.querySelectorAll(".gallery-card.video");
+
+videoCards.forEach(card => {
+    card.addEventListener("click", function() {
+        const videoSrc = this.querySelector("video").src; // Récupère la source de la vidéo cliquée
+        lightboxVid.src = videoSrc; // L'injecte dans la modale
+        lightbox.style.display = "flex"; // Affiche la modale
+        lightboxVid.play(); // Lance la vidéo automatiquement
+    });
 });
 
-// Fermer la chatbox si on clique ailleurs sur la page
-document.addEventListener('click', (e) => {
-    if (!document.getElementById('wa-widget').contains(e.target)) {
-        waChat.style.display = 'none';
+// Fermer la modale au clic sur le X
+closeBtn.onclick = function() {
+    lightbox.style.display = "none";
+    lightboxVid.pause(); // Arrête la vidéo
+    lightboxVid.src = ""; // Vide la source pour stopper le chargement
+}
+
+// Fermer la modale si on clique à côté de la vidéo
+lightbox.onclick = function(e) {
+    if (e.target === lightbox) {
+        lightbox.style.display = "none";
+        lightboxVid.pause();
+        lightboxVid.src = "";
     }
-});
+}
 
-        AOS.init({ once: true, duration: 800 });
+        AOS.init({ once: true });
     </script>
 </body>
 </html>

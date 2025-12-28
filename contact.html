@@ -141,7 +141,7 @@ nav ul a:hover, nav ul a.active { color: var(--color-accent); }
                             <div class="icon"><i class="fas fa-map-marker-alt"></i></div>
                             <div>
                                 <h4>Localisation</h4>
-                                <p>Douala, Akwa - Cameroun</p>
+                                <p>Cameroun, Yaoundé/ROND POINT RAZEL TSINGA VILLAGE</p>
                             </div>
                         </div>
 
@@ -149,7 +149,7 @@ nav ul a:hover, nav ul a.active { color: var(--color-accent); }
                             <div class="icon"><i class="fas fa-phone-alt"></i></div>
                             <div>
                                 <h4>Téléphone</h4>
-                                <p>+237 600 00 00 00</p>
+                                <p>+237657142375</p>
                             </div>
                         </div>
 
@@ -157,7 +157,7 @@ nav ul a:hover, nav ul a.active { color: var(--color-accent); }
                             <div class="icon"><i class="fas fa-envelope"></i></div>
                             <div>
                                 <h4>Email Officiel</h4>
-                                <p>contact@sch-immo.cm</p>
+                                <p>SCHSA@GMAIL.COM</p>
                             </div>
                         </div>
 
@@ -166,7 +166,7 @@ nav ul a:hover, nav ul a.active { color: var(--color-accent); }
                         <h3 style="font-family: var(--font-heading); margin-bottom: 15px; font-size: 1rem;">Réponse Rapide via WhatsApp</h3>
                         <p style="color: var(--color-subtext); font-size: 0.9rem; margin-bottom: 20px;">Idéal pour l'envoi de documents ou une demande urgente.</p>
                         
-                        <a href="https://wa.me/237600000000?text=Bonjour%20SCH%20Immobilier,%20je%20souhaite%20avoir des%20informations%20sur..." class="wa-contact-btn" target="_blank">
+                        <a href="https://wa.me/237657142375?text=Bonjour%20SCH%20Immobilier,%20je%20souhaite%20avoir des%20informations%20sur..." class="wa-contact-btn" target="_blank">
                             <i class="fab fa-whatsapp"></i> DISCUTER SUR WHATSAPP
                         </a>
                     </div>
@@ -176,41 +176,43 @@ nav ul a:hover, nav ul a.active { color: var(--color-accent); }
                     <div class="contact-form-container">
                         <h3 style="font-family: var(--font-heading); margin-bottom: 30px;">Envoyez un message</h3>
                         
-                        <form id="contactForm">
-                            <div class="form-row">
-                                <div class="form-group">
-                                    <label>Nom Complet</label>
-                                    <input type="text" placeholder="Ex: Jean Paul" required>
-                                </div>
-                                <div class="form-group">
-                                    <label>Votre Email</label>
-                                    <input type="email" placeholder="email@exemple.com" required>
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label>Sujet du message</label>
-                                <select required>
-                                    <option value="">Sélectionnez une option</option>
-                                    <option value="achat">Achat de terrain</option>
-                                    <option value="topo">Topographie / Bornage</option>
-                                    <option value="gestion">Gestion Locative</option>
-                                    <option value="autre">Autre demande</option>
-                                </select>
-                            </div>
-
-                            <div class="form-group">
-                                <label>Votre Message</label>
-                                <textarea rows="6" placeholder="Détaillez votre demande ici..." required></textarea>
-                            </div>
-
-                            <button type="submit" class="btn-send">Envoyer l'Email</button>
-                        </form>
+                        <form id="contactForm" action="https://formspree.io/f/xzdbgndp" method="POST">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Nom Complet</label>
+                            <input type="text" name="nom" placeholder="Ex: Jean Paul" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Votre Email</label>
+                            <input type="email" name="email" placeholder="email" required>
+                        </div>
                     </div>
-                </div>
 
-            </div>
-        </div>
+                    <div class="form-group">
+                        <label>Sujet du message</label>
+                        <select name="sujet" required>
+                            <option value="">Sélectionnez une option</option>
+                            <option value="achat">Achat de terrain</option>
+                            <option value="topo">Topographie / Bornage</option>
+                            <option value="gestion">Gestion Locative</option>
+                            <option value="autre">Autre demande</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Votre Message</label>
+                        <textarea name="message" rows="6" placeholder="Détaillez votre demande ici..." required></textarea>
+                    </div>
+
+                    <button type="submit" class="btn-send">Envoyer l'Email</button>
+                    
+                    <div id="statusMessage" style="margin-top:15px; display:none; padding:10px; border-radius:5px;"></div>
+                </form>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
     </section>
 
     <footer class="footer-pro">
@@ -237,11 +239,11 @@ nav ul a:hover, nav ul a.active { color: var(--color-accent); }
             </div>
             <div class="footer-col">
                 <h4>Siège Social</h4>
-                <p style="color: var(--color-subtext); font-size: 0.9rem;">Immeuble SCH, Akwa<br>Douala, Cameroun</p>
+                <p style="color: var(--color-subtext); font-size: 0.9rem;">Cameroun, Yaoundé/ROND POINT RAZEL TSINGA VILLAGE<br>YDE, Cameroun</p>
             </div>
         </div>
         <div style="text-align: center; border-top: 1px solid #1a1a1a; padding-top: 30px; color: #555; font-size: 0.8rem;">
-            &copy; 2025 SCH Immobilier. Tous droits réservés.
+            &copy; 2025 SCH Promoteur immobilier & AMENAGEUR FONCIER. Tous droits réservés.
         </div>
     </footer>
 
@@ -258,6 +260,40 @@ nav ul a:hover, nav ul a.active { color: var(--color-accent); }
             alert("Merci ! Votre message a été envoyé avec succès. Notre équipe vous contactera sous 24h.");
             this.reset();
         });
+
+        const contactForm = document.getElementById("contactForm");
+const statusDiv = document.getElementById("statusMessage");
+
+contactForm.addEventListener("submit", async function(e) {
+    e.preventDefault(); // Empêche le saut de page
+    
+    const data = new FormData(e.target);
+    
+    // Préparation de l'affichage
+    statusDiv.style.display = "block";
+    statusDiv.style.backgroundColor = "rgba(39, 163, 74, 0.1)";
+    statusDiv.style.color = "#27a34a";
+    statusDiv.innerHTML = "Envoi en cours...";
+
+    // Envoi des données à Formspree
+    fetch(e.target.action, {
+        method: 'POST',
+        body: data,
+        headers: { 'Accept': 'application/json' }
+    }).then(response => {
+        if (response.ok) {
+            statusDiv.innerHTML = "✅ Message envoyé avec succès ! Nous vous répondrons bientôt.";
+            statusDiv.style.color = "#27a34a";
+            contactForm.reset(); // Vide le formulaire
+        } else {
+            statusDiv.innerHTML = "❌ Erreur lors de l'envoi. Veuillez réessayer.";
+            statusDiv.style.color = "#ff4d4d";
+        }
+    }).catch(error => {
+        statusDiv.innerHTML = "❌ Problème de connexion. Vérifiez votre internet.";
+        statusDiv.style.color = "#ff4d4d";
+    });
+});
 
         AOS.init({ once: true, duration: 800 });
     </script>
